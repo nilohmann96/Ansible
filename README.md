@@ -1,4 +1,3 @@
 # Ansible
 
-Fallstudie zu Ansible\n
-Systemautomatisierung im Krankenhaus
+Fallstudie zu Ansible. Systemautomatisierung im Krankenhaus.
