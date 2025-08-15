@@ -1,0 +1,29 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: update cache
+      apt:
+        update-cache: yes
+
+    - name: install software on the machines
+      ansible.builtin.package:
+        name:
+          - apache2
+          - libapache2-mod-php
+          - nodejs
+          - python3-pymysql
+          - mysql-client
+          - mysql-server
+        state: latest
+
+- hosts: diagnosis
+  become: true
+  tasks:
+
+    - name: install mqtt
+      ansible.builtin.package:
+        name: mosquitto
+        state: latest
