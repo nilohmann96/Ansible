@@ -1,0 +1,29 @@
+---
+
+- hosts: database
+  become: true
+  tasks:
+
+  - name: check if directory exists
+    stat:
+      path: files
+    register: dir
+
+  - name: check if file exists
+    stat:
+      path: files/sensitive_data.txt
+    register: file
+
+  - name: create the directory for the files
+    ansible.builtin.file:
+      path: files
+      state: directory
+      mode: 0740
+    when: not dir.stat.exists
+
+  - name: copy necessary files to database and set permissions
+    ansible.builtin.copy:
+      src: files/sensitive_data.txt
+      dest: files
+      mode: 0740
+    when: not file.stat.exists
