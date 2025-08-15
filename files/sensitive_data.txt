@@ -1,0 +1,1 @@
+Sensitive Data that can only be written with the permissions, but can be read by pretty much anyone
