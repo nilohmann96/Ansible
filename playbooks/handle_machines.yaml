@@ -6,6 +6,7 @@
 
     - name: update cache
       apt:
+        upgrade: dist
         update-cache: yes
 
     - name: install software on the machines
